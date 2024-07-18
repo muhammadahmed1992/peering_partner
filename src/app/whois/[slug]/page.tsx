@@ -13,15 +13,15 @@ export default async function Page({ params }: { params: { slug: string } }) {
   //const res_asn_whois = await getWhoIsData(asn); 
   // const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
     
-  //   const res_asn = await getASNData(asn_number);
+    const res_asn = await getASNData(asn_number);
   //   await delay(250); // Delay for 1000 milliseconds (1 second)
-  //   const res_asn_peers = await getPeersData(asn_number);
+    const res_asn_peers = await getPeersData(asn_number);
   //   await delay(250);
-  //   const res_asn_prefixes = await getPrefixData(asn_number);
+    const res_asn_prefixes = await getPrefixData(asn_number);
   //   await delay(250);
-  //   const res_asn_whois = await getWhoIsData(asn_number);
+    const res_asn_whois = await getWhoIsData(asn_number);
   //   await delay(250);
-  const [res_asn, res_asn_peers, res_asn_prefixes, res_asn_whois] = await Promise.all([getASNData(asn_number), getPeersData(asn_number), getPrefixData(asn_number), getWhoIsData(asn_number)]);
+  //const [res_asn, res_asn_peers, res_asn_prefixes, res_asn_whois] = await Promise.all([getASNData(asn_number), getPeersData(asn_number), getPrefixData(asn_number), getWhoIsData(asn_number)]);
 
   const data = res_asn_whois; 
 
@@ -100,42 +100,42 @@ export default async function Page({ params }: { params: { slug: string } }) {
                         <AsnHeader res_asn={res_asn} res_peers={res_asn_peers} res_prefixes={res_asn_prefixes}/>
                     </div>
                   
-                  <div className="overflow-y-auto bg-white border p-6 border-gray-150">
-                    <div className="w-full border border-gray-400 rounded-md bg-gray-200 mb-4 p-4">
-                    <div>
-                      <pre className="p-4 rounded-lg ">
-                        {/* Render data on the screen */}
-                        {data.map((entry: any, index: any) => (
-                      <div key={index} className="text-black-100">
-                        {/* Skip the first time when entry.type === 'comments' */}
-                        {entry.type === 'comments' && index === 0 ? null : (
-                          <>
-                            {entry.type === 'object' && (
-                              <div>
-                                {/* Render object information */}
-                                {entry.attributes.map((attribute: any, attributeIndex: number) => (
-                                  <div key={attributeIndex}>
-                                    {`${attribute.name}: ${attribute.values?.join(', ')}`}
-                                  </div>
-                                ))}
-                                <div>--------------------------</div>
-                                <br />
-                                <br />
-                              </div>
-                            )}
-                            {entry.type === 'comments' && (
-                              <div>
-                                {/* Render comments */}
-                                <div dangerouslySetInnerHTML={{ __html: entry.comments.join('<br />') }} />
-                              </div>
-                            )}
-                          </>
-                        )}
+                    <div className="overflow-y-auto bg-white border p-6 border-gray-150">
+                      <div className="w-full border border-gray-400 rounded-md bg-gray-200 mb-4 p-4">
+                      <div>
+                        <pre className="p-4 rounded-lg ">
+                          {/* Render data on the screen */}
+                          {data.map((entry: any, index: any) => (
+                        <div key={index} className="text-black-100">
+                          {/* Skip the first time when entry.type === 'comments' */}
+                          {entry.type === 'comments' && index === 0 ? null : (
+                            <>
+                              {entry.type === 'object' && (
+                                <div>
+                                  {/* Render object information */}
+                                  {entry.attributes.map((attribute: any, attributeIndex: number) => (
+                                    <div key={attributeIndex}>
+                                      {`${attribute.name}: ${attribute.values?.join(', ')}`}
+                                    </div>
+                                  ))}
+                                  <div>--------------------------</div>
+                                  <br />
+                                  <br />
+                                </div>
+                              )}
+                              {entry.type === 'comments' && (
+                                <div>
+                                  {/* Render comments */}
+                                  <div dangerouslySetInnerHTML={{ __html: entry.comments.join('<br />') }} />
+                                </div>
+                              )}
+                            </>
+                          )}
+                        </div>
+                      ))}
+                        </pre>
                       </div>
-                    ))}
-                      </pre>
                     </div>
-                  </div>
                  </div>
               </div>
               </div>

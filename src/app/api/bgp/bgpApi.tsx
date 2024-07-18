@@ -4,7 +4,7 @@ export async function getASNData(asn: string) {
   try {
 
     const res_asn = await fetch(`https://api.bgpview.io/asn/${asn}`);
-
+    console.log({status: res_asn.status});
     if (!res_asn.ok) {
       const errorText = await res_asn.text();
       throw new Error(`Failed to fetch ASN data. Status: ${res_asn.status}, Status Text: ${res_asn.statusText}, Response: ${errorText}`);
@@ -21,7 +21,7 @@ export async function getPeersData(asn_peers: string) {
   try {
 
     const res_peers = await fetch(`https://api.bgpview.io/asn/${asn_peers}/peers`);
-
+    console.log({status: res_peers.status});
     if (!res_peers.ok) {
       const errorText = await res_peers.text();
       throw new Error(`Failed to fetch peers data. Status: ${res_peers.status}, Status Text: ${res_peers.statusText}, Response: ${errorText}`);
@@ -38,7 +38,7 @@ export async function getPrefixData(asn_prefixes: string) {
   try {
 
     const res_prefixes = await fetch(`https://api.bgpview.io/asn/${asn_prefixes}/prefixes`);
-
+    console.log({status: res_prefixes.status});
     if (!res_prefixes.ok) {
       const errorText = await res_prefixes.text();
       throw new Error(`Failed to fetch prefixes data. Status: ${res_prefixes.status}, Status Text: ${res_prefixes.statusText}, Response: ${errorText}`);
@@ -55,7 +55,7 @@ export async function getUpstreamData(asn_upstreams: string) {
   try {
 
     const res_upstreams = await fetch(`https://api.bgpview.io/asn/${asn_upstreams}/upstreams`);
-
+    console.log({status: res_upstreams.status});
     if (!res_upstreams.ok) {
       const errorText = await res_upstreams.text();
       throw new Error(`Failed to fetch upstreams data. Status: ${res_upstreams.status}, Status Text: ${res_upstreams.statusText}, Response: ${errorText}`);
@@ -72,7 +72,7 @@ export async function getDownstreamData(asn_downstreams: string) {
   try {
 
     const res_downstreams = await fetch(`https://api.bgpview.io/asn/${asn_downstreams}/downstreams`);
-
+    console.log({status: res_downstreams.status});
     if (!res_downstreams.ok) {
       const errorText = await res_downstreams.text();
       throw new Error(`Failed to fetch downstreams data. Status: ${res_downstreams.status}, Status Text: ${res_downstreams.statusText}, Response: ${errorText}`);
@@ -89,7 +89,7 @@ export async function getIXData(asn_ix: string) {
   try {
 
     const res_ix = await fetch(`https://api.bgpview.io/asn/${asn_ix}/ixs`);
-
+    console.log({status: res_ix.status});
     if (!res_ix.ok) {
       const errorText = await res_ix.text();
       throw new Error(`Failed to fetch IX data. Status: ${res_ix.status}, Status Text: ${res_ix.statusText}, Response: ${errorText}`);
@@ -107,7 +107,7 @@ export async function getWhoIsData(asn_whois: string) {
   try {
     console.log(asn_whois)
     const res_whois = await fetch(`https://wq.apnic.net/query?searchtext=${asn_whois}`);
-
+    console.log({status: res_whois.status});
     if (!res_whois.ok) {
       const errorText = await res_whois.text();
       throw new Error(`Failed to fetch WhoIs data. Status: ${res_whois.status}, Status Text: ${res_whois.statusText}, Response: ${errorText}`);
@@ -125,6 +125,7 @@ export async function getWhoIsData(asn_whois: string) {
 export async function getSVGData(asn_number : string){
   
   const response = await fetch(`https://api.bgpview.io/assets/graphs/${asn_number.startsWith("AS")? asn_number : 'AS' + asn_number}_Combined.svg`);
+  console.log({status: response.status});
   const svgText = await response.text();
   const modifiedSvg = svgText.replace(/xlink:href="https:\/\/bgpview\.io\/asn\//g, 'xlink:href="/AS');
   return modifiedSvg;

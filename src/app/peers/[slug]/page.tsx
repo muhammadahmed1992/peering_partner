@@ -15,18 +15,19 @@ export default async function Page({ params }: { params: { slug: string } }) {
   const asn_number = params.slug;
 
   // Fetch data using the functions from the api folder
-
   //const res_asn_peers = await getPeersData(asn_number);
   // const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
-  //   const res_asn = await getASNData(asn_number);
+  const res_asn = await getASNData(asn_number);
   //   await delay(250); // Delay for 1000 milliseconds (1 second)
-  //   const res_asn_peers = await getPeersData(asn_number);
+  const res_asn_peers = await getPeersData(asn_number);
   //   await delay(250);
-  //   const res_asn_prefixes = await getPrefixData(asn_number);
-  //   await delay(250);
+  const res_asn_prefixes = await getPrefixData(asn_number);
+  //  await delay(250);
 
-  const [res_asn, res_asn_peers, res_asn_prefixes] = await Promise.all([getASNData(asn_number), getPeersData(asn_number), getPrefixData(asn_number)]);
-
+  //const [res_asn, res_asn_peers, res_asn_prefixes] = await Promise.all([getASNData(asn_number), getPeersData(asn_number), getPrefixData(asn_number)]);
+  // Promise.allSettled([getASNData(asn_number), getPeersData(asn_number), getPrefixData(asn_number)]).then((results) =>
+  //   results.forEach((result) => console.log({response: result})),
+  // );
 
   return (
     <div className="flex flex-col min-h-screen ">
