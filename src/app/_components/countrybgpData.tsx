@@ -186,9 +186,9 @@ export default function CountryBGPData({
     setCountry(newCountry);
     if(typeof window != 'undefined'){
       if(newCountry==""){
-        window.location.href = `/asnstats`;
+        window.location.href = `/asnstatistics`;
       }else{
-      window.location.href = `/asnstats/countries/${newCountry}`;
+      window.location.href = `/asnstatistics/countries/${newCountry}`;
       }
     }
   };

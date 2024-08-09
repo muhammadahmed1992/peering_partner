@@ -18,7 +18,7 @@ export default function InitialNavBar() {
                         <a
                             aria-current="page"
                             className="inline-block rounded-lg px-2 py-1 text-lg font-bold text-blue-500 transition-all duration-200 hover:bg-gray-100 hover:text-gray-900"
-                            href="https://search.peeringpartner.com/"
+                            href="https://api.peeringpartner.com/"
                         >
                             Home
                         </a>

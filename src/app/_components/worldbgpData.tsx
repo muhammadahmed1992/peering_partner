@@ -49,9 +49,9 @@ export default function WorldBGPData({
     setCountry(newCountry);
     if(typeof window != 'undefined'){
       if(newCountry==""){
-        window.location.href = `/asnstats`;
+        window.location.href = `/asnstatistics`;
       }else{
-        window.location.href = `/asnstats/countries/${newCountry}`;
+        window.location.href = `/asnstatistics/countries/${newCountry}`;
       }
     }
   };
@@ -157,7 +157,7 @@ export default function WorldBGPData({
             {sortedData&&sortedData.map((item:any, index:any) => (
               <tr key={index}>
                 <td className="border-b border-gray-300 px-4 py-2 text-center text-gray-400 font-bold">
-                  <a href={`/asnstats/countries/${item.country_code}`}>
+                  <a href={`/asnstatistics/countries/${item.country_code}`}>
                     <img src={`https://bgpview.io/assets/flags/shiny/24/${item.country_code}.png`} alt="Flag" className="inline-block" />
                   </a>
                 </td>
@@ -283,7 +283,7 @@ export default function WorldBGPData({
 
       // Perform the redirect
       if(typeof window != 'undefined'){
-        window.location.href = `asnstats/countries/${country_code}`;
+        window.location.href = `asnstatistics/countries/${country_code}`;
       }
     };
 

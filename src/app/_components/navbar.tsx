@@ -149,7 +149,7 @@ export default function Navbar() {
               <a
                 aria-current="page"
                 className="inline-block rounded-lg px-2 py-1 text-lg font-bold text-white transition-all duration-200 hover:bg-gray-100 hover:text-gray-900"
-                href="https://search.peeringpartner.com/"
+                href="https://api.peeringpartner.com/"
               >
                 Home
               </a>
